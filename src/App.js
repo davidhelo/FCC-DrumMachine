@@ -1,21 +1,24 @@
 import './App.css';
+import Pad from './reactComponents/Pad';
 
 function App() {
+
+  var pads = ["Q", "W", "E", "A", "S", "D", "Z", "X", "C"];
+  pads = pads.map(item => (<Pad letter={item} />));
+
   return (
-    <div className="App">
+    <div className="drumMachine" id="drum-machine">
       <header className="App-header">
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Drum Machine
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+
+      <div id="pads-wraper">
+        {pads}
+      </div>
+
+      <div id="display"></div>
     </div>
   );
 }

@@ -1,0 +1,11 @@
+.drum-pad {
+    border: 3px solid green;
+    min-width: 30%;
+    min-height: 30%;
+    border-radius: 1rem;
+}
+
+.drum-pad:hover {
+    background-color: blue;
+    cursor: pointer;
+}
