@@ -36,12 +36,7 @@ function VolumeSlider() {
 function Display(props) {
     return (
         <div id="display">
-            <input 
-                type="text" 
-                value={props.displayName} 
-                enable="false" 
-            />
-
+            <div className="smallScreen">{props.displayName}</div>
             <label>Power</label>
             <Switch classSpan="slider" />
 

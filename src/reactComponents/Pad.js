@@ -11,6 +11,7 @@ function Pad(props) {
 
     return (
         <div 
+            id={props.padId + "-padId"}
             className="drum-pad" 
             onClick={handleClick}
             >
@@ -20,6 +21,7 @@ function Pad(props) {
             <audio 
                 id={props.padId}
                 src={props.audioURL}
+                className="clip"
                 >
             </audio>
         </div>

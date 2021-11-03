@@ -13,7 +13,7 @@ function App() {
   });
 
     // declare array of pads based on the currentbank of data that include the key to be shown and the audio URL to play when press.
-  let renderPads = appState.currentBankData.map(item => (<Pad audioURL={item.audioURL} letter={item.padLetter} padId={"pad-" + item.padLetter} />));
+  let renderPads = appState.currentBankData.map(item => (<Pad audioURL={item.audioURL} letter={item.padLetter} padId={item.padLetter} />));
 
   return (
     <div className="drumMachine" id="drum-machine">
