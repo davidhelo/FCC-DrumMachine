@@ -1,17 +1,27 @@
-import React from "react";
 import './Pad.css';
 
 // review this function and how to handle the click in each button
 function Pad(props) {
 
-    function handleClick(key, audioURL) {
-        console.log("key press: ", props.keyPress, "URL audio: ", props.audioURL);
+    function handleClick() {
+        const sound = document.getElementById(props.padId);
+        sound.currentTime = 0;
+        sound.play();
     };
 
     return (
         <div 
-            className="drum-pad">
+            className="drum-pad" 
+            onClick={handleClick}
+            >
+
             {props.letter}
+
+            <audio 
+                id={props.padId}
+                src={props.audioURL}
+                >
+            </audio>
         </div>
     );
 }

@@ -1,10 +1,19 @@
+import React, { useState } from 'react';
 import './App.css';
 import Pad from './reactComponents/Pad';
+import Display from './reactComponents/Display';
+import bankData from './banksData';
 
 function App() {
+  let [appState, setAppState] = useState({
+    power: true,
+    currentBankData: bankData[0], // two values 0 or 1 for two banks of data
+    display: "",
+    volume: 50
+  });
 
-  var pads = ["Q", "W", "E", "A", "S", "D", "Z", "X", "C"];
-  pads = pads.map(item => (<Pad letter={item} />));
+    // declare array of pads based on the currentbank of data that include the key to be shown and the audio URL to play when press.
+  let renderPads = appState.currentBankData.map(item => (<Pad audioURL={item.audioURL} letter={item.padLetter} padId={"pad-" + item.padLetter} />));
 
   return (
     <div className="drumMachine" id="drum-machine">
@@ -15,10 +24,10 @@ function App() {
       </header>
 
       <div id="pads-wraper">
-        {pads}
+        {renderPads}
       </div>
 
-      <div id="display"></div>
+      <Display displayName="Hola" />
     </div>
   );
 }
