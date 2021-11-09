@@ -6,7 +6,7 @@ import bankData from './banksData';
 
 function App() {
   let [appState, setAppState] = useState({
-    power: true,
+    power: false,
     currentBankData: bankData[0], // two values 0 or 1 for two banks of data
     display: ".",
     volume: 50
@@ -30,19 +30,37 @@ function handleBankChange(bankBool) {
   });
 }
 
-function handleDisplayName(audioName) {
+function handleDisplayShow(textToShow) {
   setAppState({ 
     power: appState.power,
     currentBankData: appState.currentBankData, 
-    display: audioName,
+    display: textToShow,
     volume: appState.volume
     
   });
 }
 
+function updateVolume(vol) {
+  setAppState({
+    power: appState.power,
+    currentBankData: appState.currentBankData, 
+    display: appState.volume + vol < 0 ? 0 : appState.volume + vol > 100 ? 100 : appState.volume + vol,
+    volume: appState.volume + vol < 0 ? 0 : appState.volume + vol > 100 ? 100 : appState.volume + vol
+  });
+}
+
     // declare array of pads based on the currentbank of data that include the key to be shown and the audio URL to play when press.
   let renderPads = appState.currentBankData.map(
-      item => (<Pad padPower={appState.power} audioURL={item.audioURL} letter={item.padLetter} padId={item.padLetter} displayAudioName={handleDisplayName} />)
+      item => (
+        <Pad 
+          padVolume={appState.volume}
+          padPower={appState.power} 
+          audioURL={item.audioURL} 
+          letter={item.padLetter} 
+          padId={item.padLetter} 
+          displayAudioName={handleDisplayShow} 
+        />
+      )
     );
 
   return (
@@ -58,9 +76,10 @@ function handleDisplayName(audioName) {
       </div>
 
       <Display 
-        displayName={appState.display} 
+        displayText={appState.display}
         changeBank={handleBankChange} 
         changePower={handlePowerState} 
+        setVolume={updateVolume}
       />
     </div>
   );

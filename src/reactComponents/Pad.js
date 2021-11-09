@@ -9,6 +9,7 @@ function Pad(props) {
             props.displayAudioName(props.audioURL.split('/').at(-1).replace(/[._-]/g, ' ').replace("mp3",''));
             const sound = document.getElementById(props.padId);
             sound.currentTime = 0;
+            sound.volume = props.padVolume / 100;
             sound.play();
         }
     }

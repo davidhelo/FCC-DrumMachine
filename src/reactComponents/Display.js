@@ -22,12 +22,21 @@ function Switch(props) {
     );
 }
 
-function VolumeSlider() {
+function VolumeSlider(props) {
+
+    function handleVolumeUp() {
+        props.setVolume(2);
+    }
+
+    function handleVolumeDown() {
+        props.setVolume(-2);
+    }
+
     return (
         <div>
-            <button> - </button>
+            <button onClick={handleVolumeDown} > - </button>
             <label> Volume </label>
-            <button> + </button>
+            <button onClick={handleVolumeUp}> + </button>
         </div>
     );
     /*
@@ -48,7 +57,7 @@ function VolumeSlider() {
 function Display(props) {
     return (
         <div id="display">
-            <div className="smallScreen">{props.displayName}</div>
+            <div className="smallScreen">{props.displayText}</div>
             <label>Power</label>
             <Switch
                 id="powerSwitch"
@@ -63,7 +72,7 @@ function Display(props) {
                 changeBank={props.changeBank} 
             />
 
-            <VolumeSlider />
+            <VolumeSlider setVolume={props.setVolume} />
         </div>
         );
 }
