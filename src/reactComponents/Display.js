@@ -3,7 +3,6 @@ import './display.css';
 function Switch(props) {
 
     function handleChange(event) {
-        console.log(event.target.id);
         if (event.target.id === "powerSwitch") {
         props.changePower(event.target.checked);
         } else if (event.target.id === "bankSwitch") {

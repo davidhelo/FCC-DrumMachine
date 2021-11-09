@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import './Pad.css';
 
 // review this function and how to handle the click in each button
@@ -10,7 +11,21 @@ function Pad(props) {
             sound.currentTime = 0;
             sound.play();
         }
-    };
+    }
+
+    useEffect(() => {
+        document.addEventListener('keydown', handleKeyPress);
+
+        return () => {
+            document.removeEventListener('keydown', handleKeyPress);
+        }
+    });
+
+    function handleKeyPress(e) {
+        if (e.which === props.letter.charCodeAt(0)) {
+            handleClick();
+        }
+    }
 
     return (
         <div 
