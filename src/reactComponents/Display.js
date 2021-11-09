@@ -1,13 +1,26 @@
-import { useDebugValue } from 'react';
 import './display.css';
 
 function Switch(props) {
+
+    function handleChange(event) {
+        console.log(event.target.id);
+        if (event.target.id === "powerSwitch") {
+        props.changePower(event.target.checked);
+        } else if (event.target.id === "bankSwitch") {
+            props.changeBank(event.target.checked);
+        }
+    }
+
     return (
-        <label class="switch">
-        <input type="checkbox" />
-        <span class={props.classSpan}></span>
+        <label className="switch">
+            <input 
+                id={props.id}
+                type="checkbox" 
+                onChange={handleChange}
+            />
+            <span className={props.classSpan} ></span>
         </label>
-        );
+    );
 }
 
 function VolumeSlider() {
@@ -38,10 +51,18 @@ function Display(props) {
         <div id="display">
             <div className="smallScreen">{props.displayName}</div>
             <label>Power</label>
-            <Switch classSpan="slider" />
+            <Switch
+                id="powerSwitch"
+                classSpan="slider"
+                changePower={props.changePower}
+            />
 
             <label>Sounds bank</label>
-            <Switch classSpan="slider" />
+            <Switch
+                id="bankSwitch"
+                classSpan="slider" 
+                changeBank={props.changeBank} 
+            />
 
             <VolumeSlider />
         </div>

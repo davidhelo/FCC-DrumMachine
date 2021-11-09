@@ -4,6 +4,7 @@ import './Pad.css';
 function Pad(props) {
 
     function handleClick() {
+        props.displayAudioName(props.audioURL.split('/').at(-1).replace(/[._-]/g, ' ').replace("mp3",''));
         const sound = document.getElementById(props.padId);
         sound.currentTime = 0;
         sound.play();
