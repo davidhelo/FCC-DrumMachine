@@ -42,7 +42,7 @@ function handleDisplayName(audioName) {
 
     // declare array of pads based on the currentbank of data that include the key to be shown and the audio URL to play when press.
   let renderPads = appState.currentBankData.map(
-      item => (<Pad audioURL={item.audioURL} letter={item.padLetter} padId={item.padLetter} displayAudioName={handleDisplayName} />)
+      item => (<Pad padPower={appState.power} audioURL={item.audioURL} letter={item.padLetter} padId={item.padLetter} displayAudioName={handleDisplayName} />)
     );
 
   return (
@@ -57,7 +57,11 @@ function handleDisplayName(audioName) {
         {renderPads}
       </div>
 
-      <Display displayName={appState.display} changeBank={handleBankChange} changePower={handlePowerState} />
+      <Display 
+        displayName={appState.display} 
+        changeBank={handleBankChange} 
+        changePower={handlePowerState} 
+      />
     </div>
   );
 }
