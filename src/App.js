@@ -6,7 +6,7 @@ import bankData from './banksData';
 
 function App() {
   let [appState, setAppState] = useState({
-    power: false,
+    power: true,
     currentBankData: bankData[0], // two values 0 or 1 for two banks of data
     display: ".",
     volume: 50
