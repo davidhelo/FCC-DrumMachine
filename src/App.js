@@ -44,7 +44,7 @@ function updateVolume(vol) {
   setAppState({
     power: appState.power,
     currentBankData: appState.currentBankData, 
-    display: appState.volume + vol < 0 ? 0 : appState.volume + vol > 100 ? 100 : appState.volume + vol,
+    display: "Volume: " + (appState.volume + vol < 0 ? 0 : appState.volume + vol > 100 ? 100 : appState.volume + vol),
     volume: appState.volume + vol < 0 ? 0 : appState.volume + vol > 100 ? 100 : appState.volume + vol
   });
 }
@@ -64,7 +64,7 @@ function updateVolume(vol) {
     );
 
   return (
-    <div>
+    <div className="container">
       <header className="App-header">
       <p>
         Drum Machine

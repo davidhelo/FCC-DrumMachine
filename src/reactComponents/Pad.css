@@ -1,13 +1,26 @@
 .drum-pad {
-    border: 3px solid green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     flex: 1 1 auto;
+    margin: 2px;
+
     min-width: 30%;
     min-height: 30%;
+    
+    box-shadow: 4px 4px 4px black;
     border-radius: 10px;
-    padding: auto;
+    border: 1px solid gray;
+    background-color: gray;
 }
 
 .drum-pad:hover {
     background-color: blue;
     cursor: pointer;
+    box-shadow: 6px 6px 6px black;
+}
+
+.drum-pad:active {
+    box-shadow: 2px 2px 2px black;
 }

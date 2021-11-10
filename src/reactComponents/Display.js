@@ -11,7 +11,7 @@ function Switch(props) {
     }
 
     return (
-        <label className="switch">
+        <label className="switch displayItem">
             <input 
                 id={props.id}
                 type="checkbox" 
@@ -33,10 +33,20 @@ function VolumeSlider(props) {
     }
 
     return (
-        <div>
-            <button onClick={handleVolumeDown} > - </button>
+        <div className="displayItem volume">
+            <button 
+                onClick={handleVolumeDown} 
+                className="volumeButton"> 
+                - 
+            </button>
+
             <label> Volume </label>
-            <button onClick={handleVolumeUp}> + </button>
+
+            <button 
+                onClick={handleVolumeUp} 
+                className="volumeButton">
+                + 
+            </button>
         </div>
     );
     /*
@@ -58,14 +68,14 @@ function Display(props) {
     return (
         <div id="display">
             <div className="smallScreen">{props.displayText}</div>
-            <label>Power</label>
+            <label className="displayItem">Power</label>
             <Switch
                 id="powerSwitch"
                 classSpan="slider"
                 changePower={props.changePower}
             />
 
-            <label>Sounds bank</label>
+            <label className="displayItem">Sounds bank</label>
             <Switch
                 id="bankSwitch"
                 classSpan="slider" 
