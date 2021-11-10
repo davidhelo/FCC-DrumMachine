@@ -64,23 +64,26 @@ function updateVolume(vol) {
     );
 
   return (
-    <div className="drumMachine" id="drum-machine">
+    <div>
       <header className="App-header">
-        <p>
-          Drum Machine
-        </p>
-      </header>
+      <p>
+        Drum Machine
+      </p>
+    </header>
+      <div className="drumMachine" id="drum-machine">
+      
 
-      <div id="pads-wraper">
-        {renderPads}
+        <div id="pads-wraper">
+          {renderPads}
+        </div>
+
+        <Display 
+          displayText={appState.display}
+          changeBank={handleBankChange} 
+          changePower={handlePowerState} 
+          setVolume={updateVolume}
+        />
       </div>
-
-      <Display 
-        displayText={appState.display}
-        changeBank={handleBankChange} 
-        changePower={handlePowerState} 
-        setVolume={updateVolume}
-      />
     </div>
   );
 }
